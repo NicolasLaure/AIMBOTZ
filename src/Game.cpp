@@ -6,6 +6,7 @@
 #include "screens/Gameplay.h"
 #include "screens/Menu.h"
 #include "constants/ScreenDimensions.h"
+#include "managers/FontsManager.h"
 
 using namespace sf;
 namespace aimbotz
@@ -73,6 +74,8 @@ namespace aimbotz
 		srand(time(0));
 
 		window.create(VideoMode(screen::SCREEN_WIDTH, screen::SCREEN_HEIGHT), "SFML window");
+
+		fonts::Init();
 
 		actualScreen = Screens::GAMEPLAY;
 		prevScreen = Screens::EXIT;
