@@ -1,15 +1,16 @@
 #include "FontsManager.h"
 
-
+#include <iostream>
 
 namespace aimbotz
 {
 	namespace fonts
 	{
 		static Font font;
+
 		void Init()
 		{
-			font.Font::loadFromFile("res/VT323.ttf");
+			font.loadFromFile("res/VT323.ttf");
 		}
 		void Unload()
 		{

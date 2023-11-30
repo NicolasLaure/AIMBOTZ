@@ -2,23 +2,28 @@
 
 #include "entities/Target.h"
 #include "utils/Utilities.h"
+#include "managers/FontsManager.h"
 
 namespace aimbotz
 {
 	namespace game
 	{
+		static int totalClicks = 0;
+		static int totalHits = 0;
+		static float accuracy;
+
 		void Init()
 		{
 			target::Init();
+			totalClicks = 0;
+			totalHits = 0;
 		}
 
-		static int totalClicks;
-		static int totalHits;
+		bool isMousePressed = false;
 
-		static float accuracy;
 		void Update(RenderWindow& window)
 		{
-			if (Mouse::isButtonPressed(Mouse::Left))
+			if (Mouse::isButtonPressed(Mouse::Left) && !isMousePressed)
 			{
 				totalClicks++;
 
@@ -27,28 +32,35 @@ namespace aimbotz
 					target::SetPosition(utilities::GetRandomVector2(target::GetRadius() * 2));
 					totalHits++;
 				}
+				isMousePressed = true;
 			}
+			else if(!Mouse::isButtonPressed(Mouse::Left))
+				isMousePressed = false;
+
 			if (totalClicks > 0)
-				accuracy = (totalHits / totalClicks) * 100;
+				accuracy = (static_cast<float>(totalHits) / totalClicks) * 100;
 		}
 
 		void Draw(RenderWindow& window)
 		{
 			window.clear(Color::Black);
 
-			// Draw
 			CircleShape shape(target::GetRadius());
 			shape.setPosition(target::GetPosition());
 			shape.setFillColor(Color::Green);
 			window.draw(shape);
 
-			/*Text accuracyText;
-			accuracyText.setFont();
-			accuracyText.setString(std::to_string(accuracy));
-			accuracyText.setCharacterSize(50);
-			window.draw(accuracyText);*/
+			Text accuracyText;
+			Font font;
+			font.loadFromFile("res/VT323.ttf");
+			accuracyText.setFont(font);
 
-			// Update the window
+			accuracyText.setString(std::to_string(accuracy) + "%");
+			//accuracyText.setString(std::to_string(accuracy));
+			accuracyText.setCharacterSize(50);
+			accuracyText.setFillColor(Color::Red);
+			window.draw(accuracyText);
+
 			window.display();
 		}
 	}
