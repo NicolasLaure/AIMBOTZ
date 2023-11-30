@@ -3,18 +3,25 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 
+#include "screens/Gameplay.h"
+#include "screens/Menu.h"
 #include "constants/ScreenDimensions.h"
-#include "utils/Utilities.h"
-#include "entities/Target.h"
 
 using namespace sf;
 namespace aimbotz
 {
 
 	void Init(RenderWindow& window);
-	void Update(RenderWindow& window);
-	void Draw(RenderWindow& window);
 
+	enum Screens
+	{
+		MENU,
+		GAMEPLAY,
+		EXIT
+	};
+
+	static Screens actualScreen;
+	static Screens prevScreen;
 	void RunGame()
 	{
 		RenderWindow window;
@@ -23,8 +30,40 @@ namespace aimbotz
 		// Start the game loop
 		while (window.isOpen())
 		{
-			Update(window);
-			Draw(window);
+			bool enteredNewScene = actualScreen != prevScreen;
+			prevScreen = actualScreen;
+
+			switch (actualScreen)
+			{
+			case aimbotz::MENU:
+				if (enteredNewScene)
+					menu::Init();
+
+				menu::Update(window);
+				menu::Draw(window);
+				break;
+			case aimbotz::GAMEPLAY:
+				if (enteredNewScene)
+					game::Init();
+
+				game::Update(window);
+				game::Draw(window);
+
+				break;
+			case aimbotz::EXIT:
+				return;
+				break;
+			default:
+				break;
+			}
+
+			Event event;
+			while (window.pollEvent(event))
+			{
+				// Close window: exit
+				if (event.type == Event::Closed)
+					window.close();
+			}
 		}
 
 	}
@@ -35,37 +74,7 @@ namespace aimbotz
 
 		window.create(VideoMode(screen::SCREEN_WIDTH, screen::SCREEN_HEIGHT), "SFML window");
 
-		target::Init();
-	}
-
-	void Update(RenderWindow& window)
-	{
-		if (utilities::PointToCircleCollisionCheck(static_cast<Vector2f>(Mouse::getPosition(window)), target::GetCenter(), target::GetRadius()) && Mouse::isButtonPressed(Mouse::Left))
-			target::SetPosition(utilities::GetRandomVector2(target::GetRadius() * 2));
-
-		Event event;
-		while (window.pollEvent(event))
-		{
-
-			// Close window: exit
-			if (event.type == Event::Closed)
-				window.close();
-		}
-	}
-
-	void Draw(RenderWindow& window)
-	{
-		window.clear(Color::Black);
-
-		// Draw
-		CircleShape shape(target::GetRadius());
-		shape.setPosition(target::GetPosition());
-		shape.setFillColor(Color::Green);
-		window.draw(shape);
-
-		//window.draw(text);
-
-		// Update the window
-		window.display();
+		actualScreen = Screens::GAMEPLAY;
+		prevScreen = Screens::EXIT;
 	}
 }

@@ -165,12 +165,18 @@ xcopy /s /e /y "$(SolutionDir)res" "$(OutDir)res"</Command>
     <ClCompile Include="src\entities\Target.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\managers\FontsManager.cpp" />
+    <ClCompile Include="src\screens\Gameplay.cpp" />
+    <ClCompile Include="src\screens\Menu.cpp" />
     <ClCompile Include="src\utils\Utilities.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\constants\ScreenDimensions.h" />
     <ClInclude Include="src\entities\Target.h" />
     <ClInclude Include="src\Game.h" />
+    <ClInclude Include="src\managers\FontsManager.h" />
+    <ClInclude Include="src\screens\Gameplay.h" />
+    <ClInclude Include="src\screens\Menu.h" />
     <ClInclude Include="src\utils\Utilities.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
