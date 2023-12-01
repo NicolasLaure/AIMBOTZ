@@ -14,14 +14,11 @@ namespace aimbotz
 	static const Color DARKGRAY = Color(80, 80, 80, 255);
 	static const Color WHITE = Color(255, 255, 255, 255);
 
-	void ButtonCollisionCheck(RenderWindow& window,Button& button, Scenes& scene)
+	void MenuButtonBehaviour(RenderWindow& window,Button& button, Scenes& scene)
 	{
 		Vector2i mousePos = Mouse::getPosition(window);
 
-		if (mousePos.x >= button.buttonRect.position.x &&
-			mousePos.x <= button.buttonRect.position.x + button.buttonRect.width &&
-			mousePos.y >= button.buttonRect.position.y &&
-			mousePos.y <= button.buttonRect.position.y + button.buttonRect.height)
+		if (ButtonCollision(window, button))
 		{
 			button.currentTextColor = GRAY;
 
@@ -53,45 +50,20 @@ namespace aimbotz
 			button.wasPressed = false;
 		}
 	}
-
-	void ResetButtonCollisionCheck(Button& button, bool& restartGame)
+	
+	bool ButtonCollision(RenderWindow& window, Button& button)
 	{
-		Vector2i mousePos = Mouse::getPosition();
+		Vector2i mousePos = Mouse::getPosition(window);
 
-		if (mousePos.x > button.buttonRect.position.x
-			&& mousePos.x <  button.buttonRect.position.x + button.buttonRect.width
-			&& mousePos.y > button.buttonRect.position.y
-			&& mousePos.y < button.buttonRect.position.y + button.buttonRect.height)
+		if (mousePos.x >= button.buttonRect.position.x &&
+			mousePos.x <= button.buttonRect.position.x + button.buttonRect.width &&
+			mousePos.y >= button.buttonRect.position.y &&
+			mousePos.y <= button.buttonRect.position.y + button.buttonRect.height)
 		{
-			button.currentTextColor = GRAY;
-			if (Mouse::isButtonPressed(Mouse::Left) && !button.wasPressed)
-			{
-				button.wasPressed = true;
-				/*if (!IsSoundPlaying(GetSound(SoundIdentifier::ButtonClick)))
-					PlaySound(GetSound(SoundIdentifier::ButtonClick));*/
-			}
-
-			if (Mouse::isButtonPressed(Mouse::Left) && button.wasPressed)
-			{
-				button.currentTextColor = DARKGRAY;
-			}
-
-			//mouse release 
-			if (!Mouse::isButtonPressed(Mouse::Left))
-			{
-				if (button.wasPressed)
-				{
-					/*if (!IsSoundPlaying(GetSound(SoundIdentifier::ButtonRelease)))
-						PlaySound(GetSound(SoundIdentifier::ButtonRelease));*/
-					restartGame = true;
-				}
-			}
+			return true;
 		}
 		else
-		{
-			button.currentTextColor = button.textColor;
-			button.wasPressed = false;
-		}
+			return false;
 	}
 
 	void ButtonDraw(RenderWindow& window, Button& button, bool drawRectangle)

@@ -5,6 +5,7 @@
 
 #include "screens/Gameplay.h"
 #include "screens/Menu.h"
+#include "managers/pauseManager.h"
 #include "constants/Scenes.h"
 #include "constants/ScreenDimensions.h"
 #include "managers/FontsManager.h"
@@ -18,6 +19,7 @@ namespace aimbotz
 	static Scenes actualScene;
 	static Scenes prevScene;
 
+	static bool isPaused;
 	void RunGame()
 	{
 		RenderWindow window;
@@ -40,10 +42,19 @@ namespace aimbotz
 				break;
 			case aimbotz::GAMEPLAY:
 				if (enteredNewScene)
+				{
 					game::Init();
+					isPaused = false;
+				}
 
-				game::Update(window);
+				if (!isPaused)
+					game::Update(window, isPaused);
+				else
+					Pause::Update(window,isPaused,actualScene);
+
 				game::Draw(window);
+				if(isPaused)
+					Pause::Draw(window);
 
 				break;
 			case aimbotz::EXIT:

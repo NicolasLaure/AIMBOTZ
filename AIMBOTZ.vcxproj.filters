@@ -44,6 +44,9 @@
     <ClCompile Include="src\managers\TextureManager.cpp">
       <Filter>Managers</Filter>
     </ClCompile>
+    <ClCompile Include="src\managers\pauseManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\utils\Utilities.h">
@@ -54,9 +57,6 @@
     </ClInclude>
     <ClInclude Include="src\screens\Gameplay.h">
       <Filter>Screens</Filter>
-    </ClInclude>
-    <ClInclude Include="src\entities\Target.h">
-      <Filter>Entities</Filter>
     </ClInclude>
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\screens\Menu.h">
@@ -72,6 +72,12 @@
       <Filter>Constants</Filter>
     </ClInclude>
     <ClInclude Include="src\managers\TextureManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\entities\Target.h">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\managers\pauseManager.h">
       <Filter>Managers</Filter>
     </ClInclude>
   </ItemGroup>

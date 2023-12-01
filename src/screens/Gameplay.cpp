@@ -21,6 +21,7 @@ namespace aimbotz
 		static int duration = 300;
 		static float timer;
 
+		static bool canPause = false;
 
 		Clock deltaClock;
 
@@ -33,11 +34,12 @@ namespace aimbotz
 			timer = duration;
 			deltaClock.restart();
 			cpmClock.restart();
+
 		}
 
 
 		bool isMousePressed = false;
-		void Update(RenderWindow& window)
+		void Update(RenderWindow& window, bool& isPaused)
 		{
 			if (Mouse::isButtonPressed(Mouse::Left) && !isMousePressed)
 			{
@@ -54,6 +56,15 @@ namespace aimbotz
 			}
 			else if (!Mouse::isButtonPressed(Mouse::Left))
 				isMousePressed = false;
+
+			if (!Keyboard::isKeyPressed(Keyboard::Escape) && !Mouse::isButtonPressed(Mouse::Middle))
+				canPause = true;
+
+			if ((Keyboard::isKeyPressed(Keyboard::Escape) || Mouse::isButtonPressed(Mouse::Middle)) && canPause)
+			{
+				isPaused = true;
+				canPause = false;
+			}
 
 			if (totalClicks > 0)
 				accuracy = (static_cast<float>(totalHits) / totalClicks) * 100;

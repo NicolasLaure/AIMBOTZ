@@ -25,7 +25,8 @@ namespace aimbotz
 		bool wasPressed{ false };
 	};
 
-	void ButtonCollisionCheck(RenderWindow& window, Button& button, Scenes& scene);
+	void MenuButtonBehaviour(RenderWindow& window, Button& button, Scenes& scene);
+	bool ButtonCollision(RenderWindow& window, Button& button);
 	void ResetButtonCollisionCheck(Button& button, bool& restartGame);
 	void ButtonDraw(RenderWindow& window, Button& button, bool drawRectangle);
 };

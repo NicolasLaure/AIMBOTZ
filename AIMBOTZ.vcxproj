@@ -166,6 +166,7 @@ xcopy /s /e /y "$(SolutionDir)res" "$(OutDir)res"</Command>
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\managers\FontsManager.cpp" />
+    <ClCompile Include="src\managers\pauseManager.cpp" />
     <ClCompile Include="src\managers\TextureManager.cpp" />
     <ClCompile Include="src\screens\Gameplay.cpp" />
     <ClCompile Include="src\screens\Menu.cpp" />
@@ -178,6 +179,7 @@ xcopy /s /e /y "$(SolutionDir)res" "$(OutDir)res"</Command>
     <ClInclude Include="src\entities\Target.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\managers\FontsManager.h" />
+    <ClInclude Include="src\managers\pauseManager.h" />
     <ClInclude Include="src\managers\TextureManager.h" />
     <ClInclude Include="src\screens\Gameplay.h" />
     <ClInclude Include="src\screens\Menu.h" />

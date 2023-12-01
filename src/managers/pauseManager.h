@@ -2,14 +2,16 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 
+#include "constants/Scenes.h"
+
 using namespace sf;
 
 namespace aimbotz
 {
-	namespace game
+	namespace Pause
 	{
-		void Init();
-		void Update(RenderWindow& window, bool& isPaused);
+		void init();
+		void Update(RenderWindow& window, bool& isPaused, Scenes& scene);
 		void Draw(RenderWindow& window);
 	}
 }

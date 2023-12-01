@@ -49,7 +49,7 @@ namespace aimbotz
 			
 			for (Button& button : menuData.scenesButtons)
 			{
-				ButtonCollisionCheck(window, button, scene);
+				MenuButtonBehaviour(window, button, scene);
 			}
 		
 		}
