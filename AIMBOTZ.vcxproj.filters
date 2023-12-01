@@ -41,6 +41,9 @@
     <ClCompile Include="src\ui\Button.cpp">
       <Filter>UI</Filter>
     </ClCompile>
+    <ClCompile Include="src\managers\TextureManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\utils\Utilities.h">
@@ -67,6 +70,9 @@
     </ClInclude>
     <ClInclude Include="src\constants\Scenes.h">
       <Filter>Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="src\managers\TextureManager.h">
+      <Filter>Managers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
