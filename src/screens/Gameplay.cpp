@@ -17,12 +17,14 @@ namespace aimbotz
 		static float timer;
 
 		Clock deltaClock;
+
 		void Init()
 		{
 			target::Init();
 			totalClicks = 0;
 			totalHits = 0;
 			timer = duration;
+			deltaClock.restart();
 		}
 
 

@@ -10,10 +10,10 @@ namespace aimbotz
 		SCENES_COUNT
 	};
 
-	//const char* ScenesToText[Scenes::SCENES_COUNT]
-	//{
-	//	"Menu",
-	//	"Gameplay",
-	//	"Exit"
-	//};
+	/*const char* ScenesToText[Scenes::SCENES_COUNT]
+	{
+		"Menu",
+		"Gameplay",
+		"Exit"
+	};*/
 };
