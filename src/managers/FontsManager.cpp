@@ -10,10 +10,7 @@ namespace aimbotz
 
 		void Init()
 		{
-			if (font->loadFromFile("res/VT323.ttf"))
-			{
-				std::cout << "LOADED";
-			}
+			font->loadFromFile("res/VT323.ttf");
 		}
 		void Unload()
 		{

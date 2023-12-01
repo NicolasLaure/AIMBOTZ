@@ -18,6 +18,7 @@ namespace aimbotz
 		static int duration = 300;
 		static float timer;
 
+
 		Clock deltaClock;
 
 		void Init()
@@ -39,7 +40,7 @@ namespace aimbotz
 
 				if (utilities::PointToCircleCollisionCheck(static_cast<Vector2f>(Mouse::getPosition(window)), target::GetCenter(), target::GetRadius()))
 				{
-					target::SetPosition(utilities::GetRandomVector2(target::GetRadius() * 2));
+					target::ResetPosition();
 					totalHits++;
 				}
 				isMousePressed = true;

@@ -6,12 +6,12 @@ namespace aimbotz
 {
 	namespace utilities
 	{
-		sf::Vector2f GetRandomVector2(float size)
+		sf::Vector2f GetRandomVector2(float size, int minX, int minY)
 		{
-			int maxX = screen::SCREEN_WIDTH - size;
-			int maxY = screen::SCREEN_HEIGHT - size;
-			float randX = rand()% maxX;
-			float randY = rand()% maxY;
+			int maxX = screen::SCREEN_WIDTH - size - minY;
+			int maxY = screen::SCREEN_HEIGHT - size - minY;
+			float randX = rand() % maxX + minX;
+			float randY = rand() % maxY + minY;
 			return sf::Vector2f(randX, randY);
 		}
 
@@ -25,7 +25,7 @@ namespace aimbotz
 			return distance <= circleRadius;
 		}
 
-		void DrawText(RenderWindow& window,std::string text, const Font& font, float fontSize, Vector2f position, Color color)
+		void DrawText(RenderWindow& window, std::string text, const Font& font, float fontSize, Vector2f position, Color color)
 		{
 			Text sfmlText;
 			sfmlText.setFont(font);

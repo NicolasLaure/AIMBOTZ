@@ -8,6 +8,7 @@ namespace aimbotz
 	namespace target
 	{
 		void Init();
+		void ResetPosition();
 		void SetRadius(float radius);
 		void SetPosition(Vector2f position);
 		float GetRadius();

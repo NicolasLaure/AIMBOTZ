@@ -16,11 +16,18 @@ namespace aimbotz
 		static Target target;
 
 		static float radius = 50;
+		const int UPPER_LIMIT = 58;
+
 
 		void Init()
 		{
 			SetRadius(radius);
-			target::SetPosition(utilities::GetRandomVector2(target::GetRadius() * 2));
+			ResetPosition();
+		}
+
+		void ResetPosition()
+		{
+			target::SetPosition(utilities::GetRandomVector2(target::GetRadius() * 2, 0, UPPER_LIMIT));
 		}
 
 		void SetRadius(float radius)
