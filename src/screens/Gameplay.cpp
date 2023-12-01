@@ -68,10 +68,6 @@ namespace aimbotz
 			window.clear(Color::Black);
 
 			int windowLimitSpacing = 40;
-			//CircleShape shape(target::GetRadius());
-			//shape.setPosition(target::GetPosition());
-			//shape.setFillColor(Color::Green);
-			//window.draw(shape);
 
 			Sprite gardenSprite = *textures::GetSprite(textures::Textures::BACKGROUND);
 			gardenSprite.setPosition(Vector2f(0.0f, 0.0f));
