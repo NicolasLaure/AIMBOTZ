@@ -27,9 +27,9 @@ namespace aimbotz
 
 		void Draw(RenderWindow& window)
 		{
-			//Texture pausePanel = AssetManager::getTexture(AssetManager::Textures::PAUSE_PANEL);
-
-			// draw PausePanel
+			Sprite pauseprite = *textures::GetSprite(textures::Textures::PAUSE);
+			pauseprite.setPosition(Vector2f(0.0f, 0.0f));
+			window.draw(pauseprite);
 		}
 
 		void checkMenuInputAndCollision(RenderWindow& window, bool& isPaused, Scenes& scene)

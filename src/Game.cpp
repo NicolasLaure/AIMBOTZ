@@ -52,9 +52,11 @@ namespace aimbotz
 				else
 					Pause::Update(window,isPaused,actualScene);
 
+				window.clear();
 				game::Draw(window);
 				if(isPaused)
 					Pause::Draw(window);
+				window.display();
 
 				break;
 			case aimbotz::EXIT:

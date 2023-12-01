@@ -76,8 +76,6 @@ namespace aimbotz
 
 		void Draw(RenderWindow& window)
 		{
-			window.clear(Color::Black);
-
 			int windowLimitSpacing = 40;
 
 			Sprite gardenSprite = *textures::GetSprite(textures::Textures::BACKGROUND);
@@ -87,6 +85,10 @@ namespace aimbotz
 			Sprite bugSprite = *textures::GetSprite(textures::Textures::BUG);
 			bugSprite.setPosition(target::GetPosition());
 			window.draw(bugSprite);
+
+			Sprite cursorSprite = *textures::GetSprite(textures::Textures::CURSOR);
+			cursorSprite.setPosition(static_cast<Vector2f>(Mouse::getPosition(window)));
+			window.draw(cursorSprite);
 
 			const float UI_SIZE = 50;
 			const Color UI_COLOR = Color::Red;
@@ -102,8 +104,6 @@ namespace aimbotz
 			Text cpmSfmlText = Text(cpmText, *fonts::GetFont(), UI_SIZE);
 			float textWidth = cpmSfmlText.getLocalBounds().width;
 			utilities::DrawText(window, cpmText, *fonts::GetFont(), UI_SIZE, Vector2f(static_cast<float>(screen::SCREEN_WIDTH) - textWidth - windowLimitSpacing, 0), UI_COLOR);
-
-			window.display();
 		}
 	}
 }

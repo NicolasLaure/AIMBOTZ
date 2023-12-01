@@ -12,6 +12,8 @@ namespace aimbotz
 		{
 			BUG, 
 			BACKGROUND, 
+			CURSOR,
+			PAUSE,
 			TEXTURE_COUNT
 		};
 

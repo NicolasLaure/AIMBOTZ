@@ -29,9 +29,23 @@ namespace aimbotz
 			gardenSprite->setTexture(*gardenTexture);
 			Asset background = { Textures::BACKGROUND, gardenTexture, gardenSprite};
 
+			Texture* cursorTexture = new Texture();
+			cursorTexture->loadFromFile("res/cursor.png");
+			Sprite* cursorSprite = new Sprite();
+			cursorSprite->setTexture(*cursorTexture);
+			Asset cursor = { Textures::CURSOR, cursorTexture, cursorSprite };
+
+			Texture* pauseTexture = new Texture();
+			pauseTexture->loadFromFile("res/pause.png");
+			Sprite* pauseSprite = new Sprite();
+			pauseSprite->setTexture(*pauseTexture);
+			Asset pause = { Textures::PAUSE, pauseTexture, pauseSprite };
+
 			Asset auxTextures[TEXTURE_COUNT] = {
 				bug,
-				background
+				background,
+				cursor,
+				pause
 			};
 
 			for (int i = 0; i < TEXTURE_COUNT; i++) 
