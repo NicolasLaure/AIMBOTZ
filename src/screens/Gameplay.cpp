@@ -4,6 +4,7 @@
 #include "utils/Utilities.h"
 #include "constants/ScreenDimensions.h"
 #include "managers/FontsManager.h"
+#include "managers/TextureManager.h"
 
 using namespace std;
 
@@ -26,6 +27,7 @@ namespace aimbotz
 		void Init()
 		{
 			target::Init();
+			textures::Init();
 			totalClicks = 0;
 			totalHits = 0;
 			timer = duration;
@@ -66,10 +68,18 @@ namespace aimbotz
 			window.clear(Color::Black);
 
 			int windowLimitSpacing = 40;
-			CircleShape shape(target::GetRadius());
-			shape.setPosition(target::GetPosition());
-			shape.setFillColor(Color::Green);
-			window.draw(shape);
+			//CircleShape shape(target::GetRadius());
+			//shape.setPosition(target::GetPosition());
+			//shape.setFillColor(Color::Green);
+			//window.draw(shape);
+
+			Sprite gardenSprite = *textures::GetSprite(textures::Textures::BACKGROUND);
+			gardenSprite.setPosition(Vector2f(0.0f, 0.0f));
+			window.draw(gardenSprite);
+
+			Sprite bugSprite = *textures::GetSprite(textures::Textures::BUG);
+			bugSprite.setPosition(target::GetPosition());
+			window.draw(bugSprite);
 
 			const float UI_SIZE = 50;
 			const Color UI_COLOR = Color::Red;
