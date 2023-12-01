@@ -16,6 +16,9 @@
     <Filter Include="Constants">
       <UniqueIdentifier>{6c8a7089-7b61-43b8-ab98-fa04366ce80a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{39562e12-4ba4-4978-94bd-bfd0af773864}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\utils\Utilities.cpp">
@@ -34,6 +37,9 @@
     </ClCompile>
     <ClCompile Include="src\managers\FontsManager.cpp">
       <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\Button.cpp">
+      <Filter>UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -55,6 +61,12 @@
     </ClInclude>
     <ClInclude Include="src\managers\FontsManager.h">
       <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ui\Button.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\constants\Scenes.h">
+      <Filter>Constants</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

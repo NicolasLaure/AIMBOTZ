@@ -5,24 +5,19 @@
 
 #include "screens/Gameplay.h"
 #include "screens/Menu.h"
+#include "constants/Scenes.h"
 #include "constants/ScreenDimensions.h"
 #include "managers/FontsManager.h"
 
 using namespace sf;
+
 namespace aimbotz
 {
-
 	void Init(RenderWindow& window);
 
-	enum Screens
-	{
-		MENU,
-		GAMEPLAY,
-		EXIT
-	};
+	static Scenes actualScene;
+	static Scenes prevScene;
 
-	static Screens actualScreen;
-	static Screens prevScreen;
 	void RunGame()
 	{
 		RenderWindow window;
@@ -31,16 +26,16 @@ namespace aimbotz
 		// Start the game loop
 		while (window.isOpen())
 		{
-			bool enteredNewScene = actualScreen != prevScreen;
-			prevScreen = actualScreen;
+			bool enteredNewScene = actualScene != prevScene;
+			prevScene = actualScene;
 
-			switch (actualScreen)
+			switch (actualScene)
 			{
 			case aimbotz::MENU:
 				if (enteredNewScene)
-					menu::Init();
+					menu::Start();
 
-				menu::Update(window);
+				menu::Update(window,actualScene);
 				menu::Draw(window);
 				break;
 			case aimbotz::GAMEPLAY:
@@ -77,7 +72,7 @@ namespace aimbotz
 
 		fonts::Init();
 
-		actualScreen = Screens::GAMEPLAY;
-		prevScreen = Screens::EXIT;
+		actualScene = Scenes::MENU;
+		prevScene = Scenes::EXIT;
 	}
 }
