@@ -5,6 +5,8 @@
 #include "constants/ScreenDimensions.h"
 #include "managers/FontsManager.h"
 
+using namespace std;
+
 namespace aimbotz
 {
 	namespace game
@@ -42,7 +44,7 @@ namespace aimbotz
 				}
 				isMousePressed = true;
 			}
-			else if(!Mouse::isButtonPressed(Mouse::Left))
+			else if (!Mouse::isButtonPressed(Mouse::Left))
 				isMousePressed = false;
 
 			if (totalClicks > 0)
@@ -61,28 +63,17 @@ namespace aimbotz
 			shape.setPosition(target::GetPosition());
 			shape.setFillColor(Color::Green);
 			window.draw(shape);
-		
-			Font font;
-			font.loadFromFile("res/VT323.ttf");
 
-			Text accuracyText;
-			accuracyText.setFont(font);
+			const float UI_SIZE = 50;
+			const Color UI_COLOR = Color::Red;
 
-			accuracyText.setString(std::to_string(accuracy) + "%");
-			//accuracyText.setString(std::to_string(accuracy));
-			accuracyText.setCharacterSize(50);
-			accuracyText.setFillColor(Color::Red);
-			window.draw(accuracyText);
+			string accuracyText = to_string(accuracy) + "%";
+			utilities::DrawText(window, accuracyText, *fonts::GetFont(), UI_SIZE, Vector2f(0, 0), UI_COLOR);
 
-			Text timerText;
-			std::string timerMinutes = std::to_string(static_cast<int>(timer) / 60);
-			std::string timerSeconds = static_cast<int>(timer) % 60 >= 10 ? std::to_string(static_cast<int>(timer) % 60) : "0" +std::to_string(static_cast<int>(timer) % 60);
-			timerText.setFont(font);
-			timerText.setString(timerMinutes + ":" + timerSeconds);
-			timerText.setCharacterSize(50);
-			timerText.setFillColor(Color::Red);
-			timerText.setPosition(Vector2f(static_cast<float>(screen::SCREEN_WIDTH) / 2, 0));
-			window.draw(timerText);
+			string timerMinutes = to_string(static_cast<int>(timer) / 60);
+			string timerSeconds = static_cast<int>(timer) % 60 >= 10 ? to_string(static_cast<int>(timer) % 60) : "0" + to_string(static_cast<int>(timer) % 60);
+			string timerText = timerMinutes + ":" + timerSeconds;
+			utilities::DrawText(window, timerText, *fonts::GetFont(), UI_SIZE, Vector2f(static_cast<float>(screen::SCREEN_WIDTH) / 2, 0), UI_COLOR);
 
 			window.display();
 		}

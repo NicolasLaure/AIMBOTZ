@@ -58,7 +58,10 @@ namespace aimbotz
 			{
 				// Close window: exit
 				if (event.type == Event::Closed)
+				{
+					fonts::Unload();
 					window.close();
+				}
 			}
 		}
 

@@ -2,6 +2,10 @@
 
 #include <iostream>
 
+#include "managers/FontsManager.h"
+
+using namespace std;
+
 namespace aimbotz
 {
 	static const Color PRESSED_BUTTON_DARKGRAY = { 20,20,20,160 };
@@ -92,16 +96,6 @@ namespace aimbotz
 
 	void ButtonDraw(RenderWindow& window, Button& button, bool drawRectangle)
 	{
-		Font font;
-		font.loadFromFile("res/VT323.ttf");
-
-		Text buttonText;
-		buttonText.setFont(font);
-
-		buttonText.setString(button.text.getString());
-		buttonText.setPosition(Vector2f(button.buttonRect.position.x, button.buttonRect.position.y));
-		buttonText.setCharacterSize(button.fontSize);
-		buttonText.setFillColor(button.currentTextColor);
-		window.draw(buttonText);
+		utilities::DrawText(window, button.text, *fonts::GetFont(), button.fontSize, button.buttonRect.position, button.currentTextColor);
 	}
 };

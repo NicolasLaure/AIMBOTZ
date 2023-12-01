@@ -6,18 +6,21 @@ namespace aimbotz
 {
 	namespace fonts
 	{
-		static Font font;
+		static Font* font = new Font();
 
 		void Init()
 		{
-			font.loadFromFile("res/VT323.ttf");
+			if (font->loadFromFile("res/VT323.ttf"))
+			{
+				std::cout << "LOADED";
+			}
 		}
 		void Unload()
 		{
-			//font.~Font();
+			delete font;
 		}
 
-		Font GetFont()
+		Font* GetFont()
 		{
 			return font;
 		}

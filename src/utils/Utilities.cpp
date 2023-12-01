@@ -25,5 +25,16 @@ namespace aimbotz
 			return distance <= circleRadius;
 		}
 
+		void DrawText(RenderWindow& window,std::string text, const Font& font, float fontSize, Vector2f position, Color color)
+		{
+			Text sfmlText;
+			sfmlText.setFont(font);
+			sfmlText.setString(text);
+			sfmlText.setCharacterSize(fontSize);
+			sfmlText.setFillColor(color);
+			sfmlText.setPosition(position);
+			window.draw(sfmlText);
+		}
+
 	}
 }

@@ -11,6 +11,6 @@ namespace aimbotz
 		void Init();
 		void Unload();
 
-		Font GetFont();
+		Font* GetFont();
 	}
 }

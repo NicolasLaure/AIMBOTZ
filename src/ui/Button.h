@@ -13,7 +13,7 @@ namespace aimbotz
 	{
 		utilities::Rect buttonRect;
 		Scenes sceneTo;
-		Text text;
+		std::string text;
 
 		int fontSize = 70;
 		Color textColor = Color::White;
