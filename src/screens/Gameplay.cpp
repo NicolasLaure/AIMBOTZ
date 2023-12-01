@@ -65,6 +65,7 @@ namespace aimbotz
 		{
 			window.clear(Color::Black);
 
+			int windowLimitSpacing = 40;
 			CircleShape shape(target::GetRadius());
 			shape.setPosition(target::GetPosition());
 			shape.setFillColor(Color::Green);
@@ -72,18 +73,18 @@ namespace aimbotz
 
 			const float UI_SIZE = 50;
 			const Color UI_COLOR = Color::Red;
-			string accuracyText = to_string(accuracy) + "%";
-			utilities::DrawText(window, accuracyText, *fonts::GetFont(), UI_SIZE, Vector2f(0, 0), UI_COLOR);
+			string accuracyText = "Accuracy: " + to_string(accuracy).substr(0, 5) + "%";
+			utilities::DrawText(window, accuracyText, *fonts::GetFont(), UI_SIZE, Vector2f(windowLimitSpacing, 0), UI_COLOR);
 
 			string timerMinutes = to_string(static_cast<int>(timer) / 60);
 			string timerSeconds = static_cast<int>(timer) % 60 >= 10 ? to_string(static_cast<int>(timer) % 60) : "0" + to_string(static_cast<int>(timer) % 60);
 			string timerText = timerMinutes + ":" + timerSeconds;
 			utilities::DrawText(window, timerText, *fonts::GetFont(), UI_SIZE, Vector2f(static_cast<float>(screen::SCREEN_WIDTH) / 2, 0), UI_COLOR);
 
-			string cpmText = "CPM: " + to_string(clicksPerMinute);
+			string cpmText = "CPM: " + to_string(static_cast<int>(clicksPerMinute));
 			Text cpmSfmlText = Text(cpmText, *fonts::GetFont(), UI_SIZE);
 			float textWidth = cpmSfmlText.getLocalBounds().width;
-			utilities::DrawText(window, cpmText, *fonts::GetFont(), UI_SIZE, Vector2f(static_cast<float>(screen::SCREEN_WIDTH) - textWidth, 0), UI_COLOR);
+			utilities::DrawText(window, cpmText, *fonts::GetFont(), UI_SIZE, Vector2f(static_cast<float>(screen::SCREEN_WIDTH) - textWidth - windowLimitSpacing, 0), UI_COLOR);
 
 			window.display();
 		}
